@@ -6,6 +6,7 @@ Configuración personal de escritorio — Fedora 43 + Hyprland + Catppuccin Moch
 
 | Categoría | Herramientas |
 |---|---|
+| GPU | NVIDIA GTX 1660 Ti (akmod-nvidia + modeset) |
 | WM | Hyprland |
 | Bar | Waybar |
 | Terminal | Kitty · Alacritty |
@@ -71,8 +72,10 @@ cat ~/.ssh/id_ed25519.pub  # añadir en github.com/settings/keys
 # Instalar pip packages
 pip install --user -r ~/dotfiles/misc/pip-requirements.txt
 
-# Instalar NVIDIA (si aplica)
-sudo dnf install akmod-nvidia xorg-x11-drv-nvidia
+# NVIDIA GTX 1660 Ti — el install.sh lo hace automáticamente.
+# Si necesitas reinstalar manualmente:
+sudo dnf install akmod-nvidia xorg-x11-drv-nvidia xorg-x11-drv-nvidia-cuda libva-nvidia-driver
+# Tras reiniciar, akmod compila el módulo del kernel (~2-5 min en el primer boot)
 
 # Zoom (descarga manual)
 # https://zoom.us/download → Linux → .rpm 64-bit

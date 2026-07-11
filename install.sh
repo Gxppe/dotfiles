@@ -251,11 +251,26 @@ sudo systemctl enable --now tailscaled
 ok "Tailscale instalado. Ejecuta 'sudo tailscale up' para conectar."
 
 # =============================================================================
-section "13 · NVIDIA (opcional)"
+section "13 · NVIDIA (GTX 1660 Ti)"
 # =============================================================================
-warn "Drivers NVIDIA: instalar manualmente si tienes GPU NVIDIA."
-echo "  Comando: sudo dnf install akmod-nvidia xorg-x11-drv-nvidia"
-echo "  Requerido: RPM Fusion nonfree (ya añadido)"
+info "Instalando drivers NVIDIA..."
+sudo dnf install -y \
+    akmod-nvidia \
+    xorg-x11-drv-nvidia \
+    xorg-x11-drv-nvidia-cuda \
+    libva-nvidia-driver
+
+# Forzar modeset en el kernel (necesario para Wayland/Hyprland)
+if ! grep -q "nvidia-drm.modeset=1" /etc/default/grub 2>/dev/null; then
+    sudo sed -i 's/GRUB_CMDLINE_LINUX="\(.*\)"/GRUB_CMDLINE_LINUX="\1 nvidia-drm.modeset=1 nvidia.NVreg_PreserveVideoMemoryAllocations=1"/' /etc/default/grub
+    sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    info "Parámetros de kernel NVIDIA añadidos. Reinicia para aplicar."
+fi
+
+# Habilitar servicio de suspensión NVIDIA
+sudo systemctl enable nvidia-suspend nvidia-hibernate nvidia-resume 2>/dev/null || true
+
+ok "Drivers NVIDIA instalados"
 
 # =============================================================================
 section "14 · Flatpak"
