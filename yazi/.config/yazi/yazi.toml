@@ -1,0 +1,43 @@
+[opener]
+text = [
+  { run = 'nvim "$@"', block = true },
+]
+pdf = [
+  { run = 'xdg-open "$@"' },
+]
+image = [
+  { run = 'xdg-open "$@"' },
+]
+video = [
+  { run = 'xdg-open "$@"' },
+]
+audio = [
+  { run = 'xdg-open "$@"' },
+]
+archive = [
+  { run = 'xdg-open "$@"' },
+]
+fallback = [
+  { run = 'xdg-open "$@"' },
+]
+
+[open]
+rules = [
+  { mime = "text/*", use = "text" },
+  { mime = "application/json", use = "text" },
+  { mime = "application/xml", use = "text" },
+  { mime = "application/toml", use = "text" },
+  { mime = "application/yaml", use = "text" },
+  { mime = "application/py", use = "text" },
+  { mime = "application/tex", use = "text" },
+
+  { mime = "application/pdf", use = "pdf" },
+  { mime = "image/*", use = "image" },
+  { mime = "video/*", use = "video" },
+  { mime = "audio/*", use = "audio" },
+  { mime = "application/zip", use = "archive" },
+  { mime = "application/x-tar", use = "archive" },
+
+  # Todo lo demás
+  { mime = "*", use = "fallback" },
+]

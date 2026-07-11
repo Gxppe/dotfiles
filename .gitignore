@@ -1,0 +1,20 @@
+# Archivos sensibles
+.npmrc
+misc/.npmrc
+misc/pip-requirements.txt
+.bash_history*
+
+# Binarios y cache
+*.gif
+*.pyc
+__pycache__/
+.cache/
+
+# Específicos de apps
+btop/.config/btop/log/
+atuin/.config/atuin/history.db*
+atuin/.config/atuin/session
+atuin/.config/atuin/key
+
+# Kitty socket files
+*.sock

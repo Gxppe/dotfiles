@@ -1,0 +1,22 @@
+/*****----- Configuration -----*****/
+configuration {
+    modi: "drun,run,wallpaper:~/.config/rofi/scripts/wallpaper.sh";
+    show-icons:                 true;
+    icon-theme:                 "Papirus";
+    display-drun:               "";
+    display-run:                "";
+    display-filebrowser:        "";
+    display-window:             "";
+    display-emoji:              "󰞅";
+    display-clipboard:          "";
+    display-wallpaper:          "🖼";
+    drun-display-format:        "{name}";
+    window-format:              "{t}";
+    kb-row-up: "Up,Control+k";
+    kb-row-down: "Down,Control+j";
+    kb-accept-entry: "Return,Control+m,KP_Enter";
+    kb-remove-to-eol: "";
+    kb-remove-char-back: "BackSpace";
+}
+
+@theme "~/.config/rofi/style-1.rasi"
