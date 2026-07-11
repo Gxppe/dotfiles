@@ -177,7 +177,13 @@ sudo dnf install -y \
     aria2 \
     yt-dlp \
     intel-media-driver \
-    libva-utils
+    libva-utils \
+    libva-intel-driver
+
+# liquidctl — control de la cooler Corsair (AIO) y RAM ToughRam RGB
+info "Instalando liquidctl (Corsair AIO + RGB)..."
+sudo dnf install -y liquidctl 2>/dev/null || pip install liquidctl 2>/dev/null || warn "liquidctl no disponible en repos"
+sudo usermod -aG plugdev "$USER" 2>/dev/null || true
 
 info "Instalando LaTeX (proceso largo ~2-5 min)..."
 sudo dnf install -y texlive-scheme-full || warn "texlive falló, instalar manualmente"

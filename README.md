@@ -6,7 +6,10 @@ Configuración personal de escritorio — Fedora 43 + Hyprland + Catppuccin Moch
 
 | Categoría | Herramientas |
 |---|---|
-| GPU | NVIDIA GTX 1660 Ti (akmod-nvidia + modeset) |
+| CPU | Intel i7-10700K (UHD 630 iGPU — conectar monitores a la NVIDIA) |
+| GPU | NVIDIA GTX 1660 Ti (akmod-nvidia + modeset + PRIME) |
+| RAM | 16 GB Corsair ToughRam |
+| Cooling | Corsair AIO (controlado con liquidctl) |
 | WM | Hyprland |
 | Bar | Waybar |
 | Terminal | Kitty · Alacritty |
@@ -58,9 +61,17 @@ sudo reboot
 
 ### 4. Pasos manuales post-instalación
 
+> **Importante — monitores:** conecta los cables al puerto HDMI/DisplayPort de la **GTX 1660 Ti**,
+> no a los puertos del motherboard (iGPU Intel). De lo contrario Hyprland no detectará la GPU correcta.
+> Tras el primer arranque, ejecuta `nwg-displays` para configurar resolución y posición exactas.
+
 ```bash
 # Conectar Tailscale
 sudo tailscale up
+
+# Controlar cooler Corsair AIO (ver temperatura, velocidad, RGB)
+liquidctl initialize all
+liquidctl status
 
 # Copiar wallpapers
 cp -r /ruta/origen/Wallpapers ~/Pictures/Wallpapers

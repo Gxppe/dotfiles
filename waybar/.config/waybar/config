@@ -19,10 +19,9 @@
         "mpris",
         "tray",
         "custom/monitors",
-        "memory",   
+        "memory",
         "pulseaudio",
         "custom/swaync",
-        "battery",
         "custom/powermenu",
     ],
     "mpris": {
